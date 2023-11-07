@@ -17,10 +17,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 vector3;
     private Transform _transform;
 
+    public GameObject bullet;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         _transform = transform;
+       
 
         //マウスカーソルを画面内にロック
         Cursor.lockState = CursorLockMode.Locked;
@@ -61,7 +64,11 @@ public class PlayerController : MonoBehaviour
         Camera.main.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         //プレイヤーの水平回転を制御
         transform.rotation *= Quaternion.Euler(0, mouseX, 0);
-
        
+        if (Input.GetButtonDown("Fier"))
+        {
+           // bullet.<Bullet>(),<>Fire();
+        }
     }
+       
 }
