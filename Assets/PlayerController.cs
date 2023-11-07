@@ -5,27 +5,44 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //移動速度
-    private float movespeed = 3;
+    public float moveSpeed = 5.0f;
+    //マウス(視点)感度
+    public float sensitivity = 2.0f;
 
-    private Vector3 moveVelocity;
+    private CharacterController controller;
+    private float rotationX = 0;
 
-    private CharacterController characterController;
-    private Transform transform;
-
-    // Start is called before the first frame update
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
         
+        //マウスカーソルを画面内にロック
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //入力軸による移動処理
-        moveVelocity.x = Input.GetAxis("Horizontal") * movespeed;
-        moveVelocity.z = Input.GetAxis("Vertical") * movespeed;
+        // キーの入力軸を取得
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        //入力をワールド座標からローカル座標に変換
+        Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontal, 0, vertical) * moveSpeed);
+        //フレームレート調整
+        controller.Move(moveDirection * Time.deltaTime);
 
-        characterController.Move(moveVelocity);
+        // マウスの入力軸を取得
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+
+        //マウスのY軸移動を上下視点移動に変換
+        rotationX -= mouseY;
+        //上下の視点移動を制限
+        rotationX = Mathf.Clamp(rotationX, -90, 90);
+
+
+        //カメラの上下回転を制御
+        Camera.main.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        //プレイヤーの水平回転を制御
+        transform.rotation *= Quaternion.Euler(0, mouseX, 0);
     }
 }
