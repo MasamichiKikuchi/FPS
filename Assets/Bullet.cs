@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-   
+    float bulletSpeed;
     public void Fire()
     {
-        transform.Translate(0,0,1);
+        Debug.Log("”­ŽË");
+        transform.Translate(0, 0, 1);
+        
     }
+
+
 }

@@ -65,9 +65,9 @@ public class PlayerController : MonoBehaviour
         //ƒvƒŒƒCƒ„[‚Ì…•½‰ñ“]‚ğ§Œä
         transform.rotation *= Quaternion.Euler(0, mouseX, 0);
        
-        if (Input.GetButtonDown("Fier"))
+        if (Input.GetButtonDown("Fire1"))
         {
-           // bullet.<Bullet>(),<>Fire();
+            bullet.GetComponent<Bullet>().Fire();
         }
     }
        
