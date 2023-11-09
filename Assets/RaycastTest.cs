@@ -5,6 +5,8 @@ using UnityEngine;
 public class RaycastTest : MonoBehaviour
 {
     public float rayLength = 10f;
+
+    GameObject enemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +24,22 @@ public class RaycastTest : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
             if (Physics.Raycast(ray, out hit))
             {
+                
+                
                 // Rayがオブジェクトと衝突した場合の処理
                 Debug.Log("Hit an object: " + hit.collider.gameObject.name);
+
+                GameObject target = hit.collider.gameObject;
+                if (target.tag == "Enemy")
+                {
+                    target.GetComponent<Enemy>().Damage(1);
+                }
+                    
+                else
+                {
+                    return;
+                }
+               
             }
         }
     }
