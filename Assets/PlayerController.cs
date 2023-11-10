@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //ˆÚ“®‘¬“x
+    //ç§»å‹•é€Ÿåº¦
     public float moveSpeed = 5.0f;
-    //ƒWƒƒƒ“ƒv—Í
+    //ã‚¸ãƒ£ãƒ³ãƒ—åŠ›
     public float jumpPower = 3.0f;
-    //ƒ}ƒEƒX(‹“_)Š´“x
+    //ãƒã‚¦ã‚¹(è¦–ç‚¹)æ„Ÿåº¦
     public float sensitivity = 2.0f;
 
     private CharacterController controller;
@@ -17,22 +17,28 @@ public class PlayerController : MonoBehaviour
     private Vector3 vector3;
     private Transform _transform;
 
+    int maxLife = 5;
+    int life;
+
+
     void Start()
     {
+        life = maxLife;
+
         controller = GetComponent<CharacterController>();
         _transform = transform;
 
-        //ƒ}ƒEƒXƒJ[ƒ\ƒ‹‚ğ‰æ–Ê“à‚ÉƒƒbƒN
+        //ãƒã‚¦ã‚¹ã‚«ãƒ¼ã‚½ãƒ«ã‚’ç”»é¢å†…ã«ãƒ­ãƒƒã‚¯
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         
-        // ƒL[‚Ì“ü—Í²‚ğæ“¾
+        // ã‚­ãƒ¼ã®å…¥åŠ›è»¸ã‚’å–å¾—
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        //“ü—Í‚ğƒ[ƒ‹ƒhÀ•W‚©‚çƒ[ƒJƒ‹À•W‚É•ÏŠ·
+        //å…¥åŠ›ã‚’ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã‹ã‚‰ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ã«å¤‰æ›
         Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontal, 0, vertical) * moveSpeed);
         if (Input.GetButtonDown("Jump"))
         {
@@ -44,24 +50,34 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //ƒtƒŒ[ƒ€ƒŒ[ƒg’²®
+        //ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆèª¿æ•´
         controller.Move(moveDirection * Time.deltaTime);
         controller.Move(vector3 * Time.deltaTime);
-        // ƒ}ƒEƒX‚Ì“ü—Í²‚ğæ“¾
+        // ãƒã‚¦ã‚¹ã®å…¥åŠ›è»¸ã‚’å–å¾—
         float mouseX = Input.GetAxis("Mouse X") * sensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
 
-        //ƒ}ƒEƒX‚ÌY²ˆÚ“®‚ğã‰º‹“_ˆÚ“®‚É•ÏŠ·
+        //ãƒã‚¦ã‚¹ã®Yè»¸ç§»å‹•ã‚’ä¸Šä¸‹è¦–ç‚¹ç§»å‹•ã«å¤‰æ›
         rotationX -= mouseY;
-        //ã‰º‚Ì‹“_ˆÚ“®‚ğ§ŒÀ
+        //ä¸Šä¸‹ã®è¦–ç‚¹ç§»å‹•ã‚’åˆ¶é™
         rotationX = Mathf.Clamp(rotationX, -90, 90);
 
 
-        //ƒJƒƒ‰‚Ìã‰º‰ñ“]‚ğ§Œä
+        //ã‚«ãƒ¡ãƒ©ã®ä¸Šä¸‹å›è»¢ã‚’åˆ¶å¾¡
         Camera.main.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        //ƒvƒŒƒCƒ„[‚Ì…•½‰ñ“]‚ğ§Œä
+        //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ°´å¹³å›è»¢ã‚’åˆ¶å¾¡
         transform.rotation *= Quaternion.Euler(0, mouseX, 0);
 
        
+    }
+    public void Damage(int damege)
+    {
+        life -= damege;
+        Debug.Log($"ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ©ã‚¤ãƒ•{life}");
+
+        if (life == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
