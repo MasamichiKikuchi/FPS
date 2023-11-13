@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     int life;
 
     public float rayLength = 10f;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,8 @@ public class Enemy : MonoBehaviour
     
      void Update()
      {
-            if (Input.GetButtonDown("Fire2"))
+        transform.LookAt(player.transform.position);
+        if (Input.GetButtonDown("Fire2"))
             {
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit hit;
