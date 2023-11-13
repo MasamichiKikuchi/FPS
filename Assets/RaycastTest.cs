@@ -7,6 +7,7 @@ public class RaycastTest : MonoBehaviour
 {
     public float rayLength = 10f;
     public GameObject masul;
+    private LayerMask mask;
 
     GameObject enemy;
     // Start is called before the first frame update
@@ -21,7 +22,7 @@ public class RaycastTest : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             masul.GetComponent<ParticleSystem>().Play();
-            Ray ray = new Ray(transform.position, transform.forward);
+            Ray ray = new Ray(transform.position, transform.forward,mask);
             RaycastHit hit;
 
             Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
