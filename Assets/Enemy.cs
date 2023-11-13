@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,18 +10,24 @@ public class Enemy : MonoBehaviour
 
     public float rayLength = 10f;
     public GameObject player;
+    NavMeshAgent agent;
 
     // Start is called before the first frame update
     void Start()
     {
         life = maxLife;
+
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     
      void Update()
      {
-        transform.LookAt(player.transform.position);
+
+        agent.destination = player.transform.position;
+       
+        
         if (Input.GetButtonDown("Fire2"))
             {
                 Ray ray = new Ray(transform.position, transform.forward);
