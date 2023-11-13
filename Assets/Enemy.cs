@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public GameObject player;
     NavMeshAgent agent;
 
+    public GameObject musul;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,40 +23,6 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    
-     void Update()
-     {
-
-        agent.destination = player.transform.position;
-       
-        
-        if (Input.GetButtonDown("Fire2"))
-            {
-                Ray ray = new Ray(transform.position, transform.forward);
-                RaycastHit hit;
-
-                Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
-                if (Physics.Raycast(ray, out hit))
-                {
-
-
-                    // Rayがオブジェクトと衝突した場合の処理
-                    Debug.Log("Hit an object: " + hit.collider.gameObject.name);
-
-                    GameObject target = hit.collider.gameObject;
-                    if (target.tag == "Player")
-                    {
-                        target.GetComponent<PlayerController>().Damage(1);
-                    }
-
-                    else
-                    {
-                        return;
-                    }
-
-                }
-            }
-     }
    
 
     public void Damage(int damege)
@@ -65,6 +33,34 @@ public class Enemy : MonoBehaviour
         if (life == 0)
         { 
         Destroy(gameObject);       
+        }
+    }
+    public void detect()
+    {
+        agent.destination = player.transform.position;       
+    }
+
+    public void enemyAttack() 
+    {
+        musul.GetComponent<ParticleSystem>().Play();
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+        Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
+        
+        if (Physics.Raycast(ray, out hit))
+        {
+
+            GameObject target = hit.collider.gameObject;
+            if (target.tag == "Player")
+            {
+                target.GetComponent<PlayerController>().Damage(1);
+            }
+
+            else
+            {
+                return;
+            }
         }
     }
 }

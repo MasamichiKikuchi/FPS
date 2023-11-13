@@ -1,10 +1,12 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RaycastTest : MonoBehaviour
 {
     public float rayLength = 10f;
+    public GameObject masul;
 
     GameObject enemy;
     // Start is called before the first frame update
@@ -18,6 +20,7 @@ public class RaycastTest : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            masul.GetComponent<ParticleSystem>().Play();
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
 
@@ -26,7 +29,7 @@ public class RaycastTest : MonoBehaviour
             {
                 
                 
-                // Ray‚ªƒIƒuƒWƒFƒNƒg‚ÆÕ“Ë‚µ‚½ê‡‚Ìˆ—
+                // RayãŒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨è¡çªã—ãŸå ´åˆã®å‡¦ç†
                 Debug.Log("Hit an object: " + hit.collider.gameObject.name);
 
                 GameObject target = hit.collider.gameObject;

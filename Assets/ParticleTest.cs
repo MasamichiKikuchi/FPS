@@ -1,21 +1,12 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticleTest : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+      
+    public void MasulFlash()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        { 
-       Å@Å@ GetComponent<ParticleSystem>().Play();
-        }
+       
     }
 }
