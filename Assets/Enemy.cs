@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject musul;
 
+    [SerializeField] public LayerMask layerMask;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +50,7 @@ public class Enemy : MonoBehaviour
 
         Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
         
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit,Mathf.Infinity, layerMask))
         {
 
             GameObject target = hit.collider.gameObject;
