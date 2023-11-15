@@ -1,10 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using static UnityEngine.GraphicsBuffer;
 
 public class RaycastTest : MonoBehaviour
 {
     public float rayLength = 10f;
+    public GameObject masul;
+    [SerializeField]public LayerMask layerMask;
 
     GameObject enemy;
     // Start is called before the first frame update
@@ -18,28 +22,28 @@ public class RaycastTest : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            masul.GetComponent<ParticleSystem>().Play();
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
-
             Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
-            if (Physics.Raycast(ray, out hit))
+            
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask))
             {
-                
-                
-                // Ray‚ªƒIƒuƒWƒFƒNƒg‚ÆÕ“Ë‚µ‚½ê‡‚Ìˆ—
+                GameObject target = hit.collider.gameObject;
+                // RayãŒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨è¡çªã—ãŸå ´åˆã®å‡¦ç†
                 Debug.Log("Hit an object: " + hit.collider.gameObject.name);
 
-                GameObject target = hit.collider.gameObject;
+
                 if (target.tag == "Enemy")
                 {
                     target.GetComponent<Enemy>().Damage(1);
                 }
-                    
                 else
                 {
-                    return;
+                    return;          
                 }
-               
+
             }
         }
     }
