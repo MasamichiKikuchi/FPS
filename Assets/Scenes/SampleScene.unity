@@ -339,6 +339,9 @@ MonoBehaviour:
   rayLength: 10
   player: {fileID: 914369609}
   musul: {fileID: 1627243143}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!195 &226958972
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5720,6 +5723,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayLength: 10
   masul: {fileID: 932129027}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &963254479
 GameObject:
   m_ObjectHideFlags: 0
@@ -5731,7 +5737,7 @@ GameObject:
   - component: {fileID: 963254480}
   - component: {fileID: 963254482}
   - component: {fileID: 963254481}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5824,7 +5830,7 @@ GameObject:
   - component: {fileID: 1034886784}
   - component: {fileID: 1034886786}
   - component: {fileID: 1034886785}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DetectArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
