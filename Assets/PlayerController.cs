@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
     int maxLife = 5;
     int life;
 
-
+    public GameObject LifeGauge;
     void Start()
     {
         life = maxLife;
@@ -74,10 +75,13 @@ public class PlayerController : MonoBehaviour
     {
         life -= damege;
         Debug.Log($"プレイヤーのライフ{life}");
+        LifeGauge.GetComponent<Image>().fillAmount -= 0.2f;
 
         if (life == 0)
         {
             Destroy(gameObject);
         }
     }
+
+
 }
