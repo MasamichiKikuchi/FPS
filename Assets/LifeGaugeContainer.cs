@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class LifeGaugeContainer : MonoBehaviour
 {
-    /*
+    
     public static LifeGaugeContainer Instance
     {
-        get { return Instance; }
+        get { return instance; }
     }
 
     private static LifeGaugeContainer instance;
@@ -17,24 +17,25 @@ public class LifeGaugeContainer : MonoBehaviour
     [SerializeField] private LifeGauge lifeGaugePrefab;
 
     private RectTransform rectTransform;
-    private readonly Dictionary<Status, Lifegauge> statusLifeBarMap = new Dictionary<MobStatus, LifeGauge>();
+    private readonly Dictionary<Enemy, LifeGauge> statusLifeBarMap = new Dictionary<Enemy, LifeGauge>();
 
     private void Awake()
-    {         
+    {        
+      instance = this;
       rectTransform = GetComponent<RectTransform>();   
     }
 
-    public void Add(MobStatus status)
+    public void Add(Enemy status)
     {
         var lifeGauge = Instantiate(lifeGaugePrefab, transform);
         lifeGauge.Initialize(rectTransform, mainCamera, status);
         statusLifeBarMap.Add(status, lifeGauge);   
     }
 
-    public void Remove(MobStatus status)
+    public void Remove(Enemy status)
     {
-        Destoroy(statusLifeBarMap[status].gameObject);
+        Destroy(statusLifeBarMap[status].gameObject);
         statusLifeBarMap.Remove(status);
     }
-    */
+    
 }

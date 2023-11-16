@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    int maxLife = 5;
-    int life;
+    public int maxLife = 5;
+    public int life;
 
     public float rayLength = 10f;
     public GameObject player;
@@ -22,10 +22,9 @@ public class Enemy : MonoBehaviour
         life = maxLife;
 
         agent = GetComponent<NavMeshAgent>();
-    }
 
-    // Update is called once per frame
-   
+        LifeGaugeContainer.Instance.Add(this);
+    }
 
     public void Damage(int damege)
     { 
@@ -34,8 +33,11 @@ public class Enemy : MonoBehaviour
 
         if (life == 0)
         { 
-        Destroy(gameObject);       
+        Destroy(gameObject);
+            LifeGaugeContainer.Instance.Remove(this);
         }
+
+
     }
     public void detect()
     {
