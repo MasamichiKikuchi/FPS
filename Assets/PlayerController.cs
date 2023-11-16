@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     int maxLife = 5;
     int life;
 
-    public GameObject LifeGauge;
+    public GameObject lifeGauge;
+    public GameObject panel;
     void Start()
     {
         life = maxLife;
@@ -75,7 +76,9 @@ public class PlayerController : MonoBehaviour
     {
         life -= damege;
         Debug.Log($"プレイヤーのライフ{life}");
-        LifeGauge.GetComponent<Image>().fillAmount -= 0.2f;
+        lifeGauge.GetComponent<Image>().fillAmount -= 0.2f;
+        
+        StartCoroutine(ChangeColorOverTime());
 
         if (life == 0)
         {
@@ -83,5 +86,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator ChangeColorOverTime()
+    {
+        panel.GetComponent<Image>().color = new Color(1, 0, 0, 0.5f);
+        float elapsedTime = 0f;
 
+        while (true)
+        {
+          yield return new WaitForSeconds(0.5f);
+          break;
+
+        }
+
+        panel.GetComponent<Image>().color = Color.clear;
+    }   
 }
