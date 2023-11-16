@@ -27,13 +27,13 @@ public class LifeGauge : MonoBehaviour
        _parentRectTransform = parentRectTransform;
        _camera = camera;
        _status = status;
-        Refresh(); 
+       Refresh(); 
     }
 
 
     private void Refresh()
     {
-        fillImage.fillAmount = _status.life ;
+        fillImage.fillAmount = _status.life / (_status.maxLife *1.0f);
 
         Vector3 screenPoint = Camera.main.WorldToScreenPoint(_status.transform.position);
 
