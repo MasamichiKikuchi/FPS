@@ -9,12 +9,14 @@ public class RaycastTest : MonoBehaviour
     public float rayLength = 10f;
     public GameObject masul;
     [SerializeField]public LayerMask layerMask;
+    public AudioClip fire;
+    AudioSource audioSource;
 
     GameObject enemy;
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,6 +24,7 @@ public class RaycastTest : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            audioSource.PlayOneShot(fire);
             masul.GetComponent<ParticleSystem>().Play();
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;

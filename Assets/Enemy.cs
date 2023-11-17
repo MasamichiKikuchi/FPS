@@ -14,6 +14,10 @@ public class Enemy : MonoBehaviour
 
     public GameObject musul;
 
+    public AudioClip fire;
+    public AudioClip damageSE;
+    AudioSource audioSource;
+
     [SerializeField] public LayerMask layerMask;
 
     // Start is called before the first frame update
@@ -24,11 +28,14 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         LifeGaugeContainer.Instance.Add(this);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Damage(int damege)
-    { 
-      life -= damege;
+    {
+        audioSource.PlayOneShot(damageSE);
+        life -= damege;
         Debug.Log($"敵のライフ{life}");
 
         if (life == 0)
@@ -46,6 +53,7 @@ public class Enemy : MonoBehaviour
 
     public void enemyAttack() 
     {
+        audioSource.PlayOneShot(fire);
         musul.GetComponent<ParticleSystem>().Play();
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;

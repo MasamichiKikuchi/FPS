@@ -23,8 +23,13 @@ public class PlayerController : MonoBehaviour
 
     public GameObject lifeGauge;
     public GameObject panel;
+
+    public AudioClip damageSE;
+    AudioSource audioSource;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         life = maxLife;
 
         controller = GetComponent<CharacterController>();
@@ -72,9 +77,10 @@ public class PlayerController : MonoBehaviour
 
        
     }
-    public void Damage(int damege)
+    public void Damage(int damage)
     {
-        life -= damege;
+        audioSource.PlayOneShot(damageSE);
+        life -= damage;
         Debug.Log($"プレイヤーのライフ{life}");
         lifeGauge.GetComponent<Image>().fillAmount -= 0.2f;
         
