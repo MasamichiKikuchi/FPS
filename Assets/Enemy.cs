@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour,IDamageable
 {
     public int maxLife = 5;
     public int life;
@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
             GameObject target = hit.collider.gameObject;
             if (target.tag == "Player")
             {
-                target.GetComponent<PlayerController>().Damage(1);
+                target.GetComponent<IDamageable>().Damage(1);
             }
 
             else
