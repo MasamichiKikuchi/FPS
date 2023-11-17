@@ -5,14 +5,18 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    int maxLife = 5;
-    int life;
+    public int maxLife = 5;
+    public int life;
 
     public float rayLength = 10f;
     public GameObject player;
     NavMeshAgent agent;
 
     public GameObject musul;
+
+    public AudioClip fire;
+    public AudioClip damageSE;
+    AudioSource audioSource;
 
     [SerializeField] public LayerMask layerMask;
 
@@ -22,20 +26,25 @@ public class Enemy : MonoBehaviour
         life = maxLife;
 
         agent = GetComponent<NavMeshAgent>();
+
+        LifeGaugeContainer.Instance.Add(this);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-   
-
     public void Damage(int damege)
-    { 
-      life -= damege;
+    {
+        audioSource.PlayOneShot(damageSE);
+        life -= damege;
         Debug.Log($"敵のライフ{life}");
 
         if (life == 0)
         { 
-        Destroy(gameObject);       
+        Destroy(gameObject);
+            LifeGaugeContainer.Instance.Remove(this);
         }
+
+
     }
     public void detect()
     {
@@ -44,6 +53,7 @@ public class Enemy : MonoBehaviour
 
     public void enemyAttack() 
     {
+        audioSource.PlayOneShot(fire);
         musul.GetComponent<ParticleSystem>().Play();
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,9 +21,15 @@ public class PlayerController : MonoBehaviour
     int maxLife = 5;
     int life;
 
+    public GameObject lifeGauge;
+    public GameObject panel;
 
+    public AudioClip damageSE;
+    AudioSource audioSource;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         life = maxLife;
 
         controller = GetComponent<CharacterController>();
@@ -70,14 +77,33 @@ public class PlayerController : MonoBehaviour
 
        
     }
-    public void Damage(int damege)
+    public void Damage(int damage)
     {
-        life -= damege;
+        audioSource.PlayOneShot(damageSE);
+        life -= damage;
         Debug.Log($"プレイヤーのライフ{life}");
+        lifeGauge.GetComponent<Image>().fillAmount -= 0.2f;
+        
+        StartCoroutine(ChangeColorOverTime());
 
         if (life == 0)
         {
             Destroy(gameObject);
         }
     }
+
+    IEnumerator ChangeColorOverTime()
+    {
+        panel.GetComponent<Image>().color = new Color(1, 0, 0, 0.5f);
+        float elapsedTime = 0f;
+
+        while (true)
+        {
+          yield return new WaitForSeconds(0.5f);
+          break;
+
+        }
+
+        panel.GetComponent<Image>().color = Color.clear;
+    }   
 }
