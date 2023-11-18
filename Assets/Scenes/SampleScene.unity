@@ -322,7 +322,6 @@ Transform:
   - {fileID: 1637164984}
   - {fileID: 1034886784}
   - {fileID: 963254480}
-  - {fileID: 718245603}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -5553,7 +5552,6 @@ GameObject:
   - component: {fileID: 718245610}
   - component: {fileID: 718245609}
   - component: {fileID: 718245608}
-  - component: {fileID: 718245604}
   - component: {fileID: 718245607}
   - component: {fileID: 718245606}
   - component: {fileID: 718245605}
@@ -5563,7 +5561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &718245603
 Transform:
   m_ObjectHideFlags: 0
@@ -5571,40 +5569,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718245602}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: 0.5, z: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 4, y: 1, z: 10}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 843394253}
   - {fileID: 474310479}
   - {fileID: 967063249}
-  m_Father: {fileID: 226958970}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &718245604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718245602}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e9dbd00629114a4db3f560618f489e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxLife: 5
-  life: 0
-  attakePower: 0
-  rayLength: 10
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  player: {fileID: 914369609}
-  masul: {fileID: 598245716}
-  fire: {fileID: 8300000, guid: 9a54f559b74d3c644b5b0cf3b7753d36, type: 3}
-  damageSE: {fileID: 8300000, guid: 72076acb141919647945f5efb0ed0500, type: 3}
 --- !u!82 &718245605
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5741,7 +5716,7 @@ MonoBehaviour:
   rayLength: 10
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   player: {fileID: 914369609}
   masul: {fileID: 598245716}
   fire: {fileID: 8300000, guid: 9a54f559b74d3c644b5b0cf3b7753d36, type: 3}
@@ -6072,7 +6047,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -11436,7 +11411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978ea1becdfb8ac409a3a0ccb51cb2ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 226958971}
+  enemyObject: {fileID: 226958966}
 --- !u!65 &963254482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11456,7 +11431,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 5}
+  m_Size: {x: 2, y: 1, z: 4.94}
   m_Center: {x: 0, y: 0, z: 3}
 --- !u!1 &967063248
 GameObject:
@@ -11503,7 +11478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978ea1becdfb8ac409a3a0ccb51cb2ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 718245604}
+  enemyObject: {fileID: 718245602}
 --- !u!65 &967063251
 BoxCollider:
   m_ObjectHideFlags: 0

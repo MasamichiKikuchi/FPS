@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
             GameObject target = hit.collider.gameObject;
             if (target.tag == "Player")
             {
-                target.GetComponent<IDamageable>().Damage(attakePower);
+                //target.GetComponent<IDamageable>().Damage(attakePower);
             }
 
             else
