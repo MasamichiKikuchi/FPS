@@ -6,11 +6,19 @@ using UnityEngine.Events;
 public class AttackArea : MonoBehaviour
 {
 
-   public Enemy enemy;
-   
+    public GameObject enemyObject;
+    Enemy enemy;
 
-    public void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        enemy.enemyAttack(other);
+        enemy = enemyObject.GetComponent<Enemy>();
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+          enemy.enemyAttack(other);
+        }
     }
 }
