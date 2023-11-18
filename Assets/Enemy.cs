@@ -13,24 +13,26 @@ public class Enemy : MonoBehaviour
 
     public void enemyAttack(Collider collider)
     {
-       
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
-
-        Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
-
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        if (collider.tag == "Player")
         {
+            Ray ray = new Ray(transform.position, collider.transform.position);
+            RaycastHit hit;
 
-            GameObject target = hit.collider.gameObject;
-            if (target.tag == "Player")
-            {
-                target.GetComponent<IDamageable>().Damage(attakePower);
-            }
+            Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
 
-            else
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
-                return;
+
+                GameObject target = hit.collider.gameObject;
+                if (target.tag == "Player")
+                {
+                    target.GetComponent<IDamageable>().Damage(attakePower);
+                }
+
+                else
+                {
+                    return;
+                }
             }
         }
     }
