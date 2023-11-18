@@ -6048,7 +6048,7 @@ GameObject:
   - component: {fileID: 914369614}
   - component: {fileID: 914369615}
   - component: {fileID: 914369616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -11436,33 +11436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978ea1becdfb8ac409a3a0ccb51cb2ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 226958971}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: enemyAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1627243144}
-        m_TargetAssemblyTypeName: ParticleTest, Assembly-CSharp
-        m_MethodName: masulFlash
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  enemy: {fileID: 226958971}
 --- !u!65 &963254482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11529,33 +11503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978ea1becdfb8ac409a3a0ccb51cb2ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 718245607}
-        m_TargetAssemblyTypeName: BigEnemy, Assembly-CSharp
-        m_MethodName: enemyAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 598245717}
-        m_TargetAssemblyTypeName: ParticleTest, Assembly-CSharp
-        m_MethodName: masulFlash
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  enemy: {fileID: 718245604}
 --- !u!65 &967063251
 BoxCollider:
   m_ObjectHideFlags: 0
