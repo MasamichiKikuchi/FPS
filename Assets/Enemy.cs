@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public float rayLength = 10f;
     public LayerMask layerMask;
 
-    public void enemyAttack()
+    public void enemyAttack(Collider collider)
     {
        
         Ray ray = new Ray(transform.position, transform.forward);

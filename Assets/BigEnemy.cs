@@ -36,11 +36,11 @@ public class BigEnemy : Enemy,IDamageable
     }
 
 
-    public void enemyAttack()
+    public void enemyAttack(Collider collider)
     {
         audioSource.PlayOneShot(fire);
         masul.GetComponent<ParticleSystem>().Play();
-        base.enemyAttack();
+        base.enemyAttack(collider);
     }
 
     public void Damage(int damege)

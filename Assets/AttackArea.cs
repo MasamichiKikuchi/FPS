@@ -5,10 +5,12 @@ using UnityEngine.Events;
 
 public class AttackArea : MonoBehaviour
 {
-    public UnityEvent enemyAttack;
+
+   public Enemy enemy;
+   
 
     public void OnTriggerEnter(Collider other)
     {
-        enemyAttack.Invoke();
+        enemy.enemyAttack(other);
     }
 }
