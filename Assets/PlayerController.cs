@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour , IDamageable
 
         if (life == 0)
         {
-            Destroy(gameObject);
+            Debug.Log("ゲームオーバー");
         }
     }
 

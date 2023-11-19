@@ -18,7 +18,17 @@ public class AttackArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-          enemy.enemyAttack(other);
+            StartCoroutine(Loop1(other));
+        }
+    }
+
+    private IEnumerator Loop1(Collider other)
+    {
+        while (true)
+        {           
+            enemy.enemyAttack(other);
+          
+            yield return new WaitForSeconds(3.0f);
         }
     }
 }

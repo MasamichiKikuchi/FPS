@@ -18,7 +18,7 @@ public class BigEnemy : Enemy,IDamageable
     void Start()
     {
         maxLife = 10;
-        attakePower = 5;
+        attakePower = 3;
 
         life = maxLife;
 
