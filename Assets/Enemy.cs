@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public float rayLength = 10f;
     public LayerMask layerMask;
 
-    public void enemyAttack(Collider collider)
+    public virtual void enemyAttack(Collider collider)
     {
 
         Vector3 direction = (collider.transform.position - transform.position).normalized;
