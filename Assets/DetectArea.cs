@@ -9,7 +9,7 @@ public class DetectArea : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-      //  detect.Invoke();
+        detect.Invoke();
     }
     
 }
