@@ -14,19 +14,24 @@ public class BigEnemy : Enemy,IDamageable
     public AudioClip damageSE;
     AudioSource audioSource;
 
-    // Start is called before the first frame update
+   
     void Start()
     {
-        maxLife = 10;
-        attakePower = 5;
-
-        life = maxLife;
+        Initialize();
 
         agent = GetComponent<NavMeshAgent>();
 
         LifeGaugeContainer.Instance.Add(this);
 
         audioSource = GetComponent<AudioSource>();
+    }
+
+    void Initialize()
+    {
+        maxLife = 10;
+        attakePower = 2;
+        score = 200;
+        life = maxLife;
     }
 
 
@@ -43,9 +48,9 @@ public class BigEnemy : Enemy,IDamageable
         base.enemyAttack();
     }
 
-    public void Damage(int damege)
+    public override void Damage(int damege)
     {
-        audioSource.PlayOneShot(damageSE);
         base.Damage(damege);
+        audioSource.PlayOneShot(damageSE);    
     }
 }
