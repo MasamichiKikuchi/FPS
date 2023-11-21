@@ -53,8 +53,9 @@ public class MobEnemy : Enemy, IDamageable
 
     public override void Damage(int damege)
     {
-        base.Damage(damege);
         audioSource.PlayOneShot(damageSE);
+        base.Damage(damege);
+        
       
         if (life == 0)
         {
