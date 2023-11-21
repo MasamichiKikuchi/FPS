@@ -12,15 +12,21 @@ public class Enemy : MonoBehaviour
     public float rayLength = 10f;
     public LayerMask layerMask;
 
-    public void enemyAttack()
+    public virtual void enemyAttack(Collider collider)
     {
-       
-        Ray ray = new Ray(transform.position, transform.forward);
+
+        Vector3 direction = (collider.transform.position - transform.position).normalized;
+        Ray ray = new Ray(transform.position, direction);
+
         RaycastHit hit;
 
         Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        var test = Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask);
+
+        Debug.Log($"レイがあたった{test}");
+        
+        if (test)
         {
 
             GameObject target = hit.collider.gameObject;
@@ -34,6 +40,7 @@ public class Enemy : MonoBehaviour
                 return;
             }
         }
+
     }
 
     public virtual void Damage(int damege)

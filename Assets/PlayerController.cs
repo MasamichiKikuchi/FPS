@@ -18,8 +18,9 @@ public class PlayerController : MonoBehaviour , IDamageable
     private Vector3 vector3;
     private Transform _transform;
 
-    int maxLife = 5;
-    int life;
+    [SerializeField] int maxLife = 10;
+    [SerializeField] int life;
+
 
     public GameObject lifeGauge;
     public GameObject panel;
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour , IDamageable
 
         if (life == 0)
         {
-            Destroy(gameObject);
+            Debug.Log("ゲームオーバー");
         }
     }
 

@@ -17,6 +17,7 @@ public class BigEnemy : Enemy,IDamageable
    
     void Start()
     {
+
         Initialize();
 
         agent = GetComponent<NavMeshAgent>();
@@ -41,11 +42,11 @@ public class BigEnemy : Enemy,IDamageable
     }
 
 
-    public void enemyAttack()
+    public override void enemyAttack(Collider collider)
     {
+        base.enemyAttack(collider);
         audioSource.PlayOneShot(fire);
         masul.GetComponent<ParticleSystem>().Play();
-        base.enemyAttack();
     }
 
     public override void Damage(int damege)
