@@ -40,8 +40,7 @@ public class RaycastTest : MonoBehaviour
 
                 if (target.tag == "Enemy")
                 {
-                    target.GetComponent<IDamageable>().Damage(1);
-                }
+                    target.GetComponent<IDamageable>().Damage(1);          }
                 else
                 {
                     return;          

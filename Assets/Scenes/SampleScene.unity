@@ -457,6 +457,7 @@ MonoBehaviour:
   masul: {fileID: 1627243143}
   fire: {fileID: 8300000, guid: 9a54f559b74d3c644b5b0cf3b7753d36, type: 3}
   damageSE: {fileID: 8300000, guid: 72076acb141919647945f5efb0ed0500, type: 3}
+  destrySE: {fileID: 8300000, guid: 6d440e9deebbd6b49be9549e6b91fae1, type: 3}
 --- !u!195 &226958972
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -17234,6 +17235,7 @@ MonoBehaviour:
   masul: {fileID: 733653242}
   fire: {fileID: 8300000, guid: 9a54f559b74d3c644b5b0cf3b7753d36, type: 3}
   damageSE: {fileID: 8300000, guid: 72076acb141919647945f5efb0ed0500, type: 3}
+  destrySE: {fileID: 0}
 --- !u!65 &1458994969
 BoxCollider:
   m_ObjectHideFlags: 0
