@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class MobEnemy : Enemy, IDamageable
 {
-    
+
     public GameObject player;
     NavMeshAgent agent;
 
@@ -13,12 +13,15 @@ public class MobEnemy : Enemy, IDamageable
 
     public AudioClip fire;
     public AudioClip damageSE;
+    public AudioClip destrySE;
     AudioSource audioSource;
+
+    bool coroutine = false;
 
     // Start is called before the first frame update
     void Start()
     {
-       Initialize();
+        Initialize();
 
         agent = GetComponent<NavMeshAgent>();
 
@@ -41,9 +44,8 @@ public class MobEnemy : Enemy, IDamageable
         agent.destination = player.transform.position;
     }
 
-
     public override void enemyAttack(Collider collider)
-    {          
+    {
         base.enemyAttack(collider);
         audioSource.PlayOneShot(fire);
         masul.GetComponent<ParticleSystem>().Play();
@@ -53,7 +55,12 @@ public class MobEnemy : Enemy, IDamageable
     {
         base.Damage(damege);
         audioSource.PlayOneShot(damageSE);
-       
-    }
+      
+        if (life == 0)
+        {
+            audioSource.PlayOneShot(destrySE);
+        }
 
+    }
+    
 }

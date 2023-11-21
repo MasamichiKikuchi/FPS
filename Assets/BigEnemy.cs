@@ -14,7 +14,8 @@ public class BigEnemy : Enemy,IDamageable
     public AudioClip damageSE;
     AudioSource audioSource;
 
-   
+
+
     void Start()
     {
 
@@ -54,4 +55,6 @@ public class BigEnemy : Enemy,IDamageable
         base.Damage(damege);
         audioSource.PlayOneShot(damageSE);    
     }
+
+    
 }

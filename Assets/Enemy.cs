@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public float rayLength = 10f;
     public LayerMask layerMask;
 
+    bool coroutine = false;
+
     public virtual void enemyAttack(Collider collider)
     {
 
@@ -46,7 +48,11 @@ public class Enemy : MonoBehaviour
     public virtual void Damage(int damege)
     {
         life -= damege;
-        Debug.Log($"{this.gameObject.name}のライフ{life}");
+       
+        if (coroutine == false)
+        {
+            StartCoroutine(ChangeColor());
+        }
 
         if (life == 0)
         {
@@ -54,6 +60,23 @@ public class Enemy : MonoBehaviour
             LifeGaugeContainer.Instance.Remove(this);
             Score.Instance.AddScore(score);
         }
+    }
+    IEnumerator ChangeColor()
+    {
+        var color = GetComponent<Renderer>().material.color;
+        GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.5f);
+
+        while (true)
+        {
+            coroutine = true;
+            yield return new WaitForSeconds(0.2f);
+            coroutine = false;
+            break;
+
+        }
+
+        GetComponent<Renderer>().material.color = color;
+
     }
 
 }
