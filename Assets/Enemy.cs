@@ -23,12 +23,8 @@ public class Enemy : MonoBehaviour
         RaycastHit hit;
 
         Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
-
-        var test = Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask);
-
-        Debug.Log($"レイがあたった{test}");
         
-        if (test)
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
 
             GameObject target = hit.collider.gameObject;

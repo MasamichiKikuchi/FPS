@@ -82,7 +82,6 @@ public class PlayerController : MonoBehaviour , IDamageable
     {
         audioSource.PlayOneShot(damageSE);
         life -= damage;
-        Debug.Log($"プレイヤーのライフ{life}");
         lifeGauge.GetComponent<Image>().fillAmount -= 0.2f;
         
         StartCoroutine(ChangeColorOverTime());

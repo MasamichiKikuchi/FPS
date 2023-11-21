@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.GraphicsBuffer;
 
-public class RaycastTest : MonoBehaviour
+public class Raycast : MonoBehaviour
 {
     public float rayLength = 10f;
     public GameObject masul;
@@ -12,8 +12,6 @@ public class RaycastTest : MonoBehaviour
     public AudioClip fire;
     AudioSource audioSource;
 
-    GameObject enemy;
-    // Start is called before the first frame update
     void Start()
     {
         this.audioSource = GetComponent<AudioSource>();
@@ -34,9 +32,6 @@ public class RaycastTest : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask))
             {
                 GameObject target = hit.collider.gameObject;
-                // Rayがオブジェクトと衝突した場合の処理
-                Debug.Log("Hit an object: " + hit.collider.gameObject.name);
-
 
                 if (target.tag == "Enemy")
                 {
