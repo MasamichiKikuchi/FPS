@@ -18,16 +18,21 @@ public class MobEnemy : Enemy, IDamageable
     // Start is called before the first frame update
     void Start()
     {
-        maxLife = 5;
-        attakePower = 1;
-
-        life = maxLife;
+       Initialize();
 
         agent = GetComponent<NavMeshAgent>();
 
         LifeGaugeContainer.Instance.Add(this);
 
         audioSource = GetComponent<AudioSource>();
+    }
+
+    void Initialize()
+    {
+        maxLife = 5;
+        attakePower = 1;
+        score = 100;
+        life = maxLife;
     }
 
 
@@ -44,10 +49,11 @@ public class MobEnemy : Enemy, IDamageable
         masul.GetComponent<ParticleSystem>().Play();
     }
 
-    public void Damage(int damege)
-    {     
-        audioSource.PlayOneShot(damageSE);
+    public override void Damage(int damege)
+    {
         base.Damage(damege);
+        audioSource.PlayOneShot(damageSE);
+       
     }
 
 }

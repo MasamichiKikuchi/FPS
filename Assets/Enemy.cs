@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public int maxLife;
     public int life;
     public int attakePower;
+    public int score;
 
     public float rayLength = 10f;
     public LayerMask layerMask;
@@ -42,7 +43,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void Damage(int damege)
+    public virtual void Damage(int damege)
     {
         life -= damege;
         Debug.Log($"{this.gameObject.name}のライフ{life}");
@@ -51,6 +52,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             LifeGaugeContainer.Instance.Remove(this);
+            Score.Instance.AddScore(score);
         }
     }
 
