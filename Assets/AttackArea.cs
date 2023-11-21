@@ -8,27 +8,39 @@ public class AttackArea : MonoBehaviour
 
     public GameObject enemyObject;
     Enemy enemy;
+    bool coroutine = false;
+
 
     private void Start()
     {
         enemy = enemyObject.GetComponent<Enemy>();
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(Loop1(other));
+            if (coroutine ==false)
+            {
+                StartCoroutine(Loop1(other));
+            }
         }
     }
 
     private IEnumerator Loop1(Collider other)
     {
         while (true)
-        {           
+        {
+            coroutine = true;
+
             enemy.enemyAttack(other);
           
             yield return new WaitForSeconds(3.0f);
+
+            coroutine = false;
+
+            break;
+            
         }
     }
 }
