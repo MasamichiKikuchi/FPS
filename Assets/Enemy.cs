@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
     public virtual void Damage(int damege)
     {
         life -= damege;
-       
+        
         if (coroutine == false)
         {
             StartCoroutine(ChangeColor());
@@ -56,9 +56,11 @@ public class Enemy : MonoBehaviour
 
         if (life == 0)
         {
-            Destroy(gameObject);
+           
             LifeGaugeContainer.Instance.Remove(this);
             Score.Instance.AddScore(score);
+            Destroy(gameObject);
+
         }
     }
     IEnumerator ChangeColor()
@@ -76,8 +78,18 @@ public class Enemy : MonoBehaviour
         }
 
         GetComponent<Renderer>().material.color = color;
-
     }
+    public GameObject particleSystemPrefab;
+
+    private void OnDestroy()
+    {
+        if (particleSystemPrefab != null)
+        {
+            Instantiate(particleSystemPrefab, transform.position, transform.rotation);
+        }
+    }
+
+
 
 }
 
