@@ -212,7 +212,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &226958966
 GameObject:
@@ -323,7 +323,7 @@ Transform:
   - {fileID: 1034886784}
   - {fileID: 963254480}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &226958971
 MonoBehaviour:
@@ -5635,7 +5635,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &718245602
 GameObject:
@@ -5675,7 +5675,7 @@ Transform:
   - {fileID: 474310479}
   - {fileID: 967063249}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &718245605
 AudioSource:
@@ -5815,7 +5815,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 129
-  particleSystemPrefab: {fileID: 0}
+  particleSystemPrefab: {fileID: 7550154365148336324, guid: 9a84644ff2efcf543ba84ccc9492f160, type: 3}
   player: {fileID: 914369609}
   masul: {fileID: 598245716}
   fire: {fileID: 8300000, guid: 9a54f559b74d3c644b5b0cf3b7753d36, type: 3}
@@ -6214,7 +6214,7 @@ Transform:
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &914369614
 MonoBehaviour:
@@ -12095,7 +12095,7 @@ RectTransform:
   m_Children:
   - {fileID: 1043780153}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -17251,7 +17251,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1865065868
 GameObject:
@@ -17352,7 +17352,7 @@ RectTransform:
   - {fileID: 1058778832}
   - {fileID: 474735779}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -17420,5 +17420,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
