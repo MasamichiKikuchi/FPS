@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MobEnemy : Enemy, IDamageable
+public class MobEnemy : Enemy
 {
 
     public GameObject player;

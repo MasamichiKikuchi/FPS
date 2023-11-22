@@ -22,12 +22,12 @@ public class AttackArea : MonoBehaviour
         {
             if (coroutine ==false)
             {
-                StartCoroutine(Loop1(other));
+                StartCoroutine(EnemyAttackLoop(other));
             }
         }
     }
 
-    private IEnumerator Loop1(Collider other)
+    private IEnumerator EnemyAttackLoop(Collider other)
     {
         while (true)
         {
