@@ -24,6 +24,7 @@ public class Raycast : MonoBehaviour
         {
             audioSource.PlayOneShot(fire);
             masul.GetComponent<ParticleSystem>().Play();
+           
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
             Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
