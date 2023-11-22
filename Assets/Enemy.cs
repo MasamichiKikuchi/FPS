@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour,IDamageable
 
             GameObject target = hit.collider.gameObject;
             
-                target.GetComponent<IDamageable>().Damage(attakePower);
+            target.GetComponent<IDamageable>().Damage(attakePower);
             
         }
 
@@ -58,14 +58,10 @@ public class Enemy : MonoBehaviour,IDamageable
         var color = GetComponent<Renderer>().material.color;
         GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.5f);
 
-        while (true)
-        {
+        
             coroutine = true;
             yield return new WaitForSeconds(0.2f);
             coroutine = false;
-            break;
-
-        }
 
         GetComponent<Renderer>().material.color = color;
     }
